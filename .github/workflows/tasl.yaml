@@ -8,6 +8,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Fix Git safe directory #добавляю, чтобы работал build с container: golang:1.26
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"  
+
+
       - name: Vet
         run: |
           go vet ./...
